@@ -1,0 +1,24 @@
+[build-system]
+requires = ["maturin>=1.7,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "frequenz-{{project_name}}"
+description = "{{project_description}}"
+readme = "README.md"
+license = { text = "MIT" }
+keywords = ["frequenz", "python", "rust"]
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+requires-python = ">= 3.11, < 4"
+dynamic = ["version"]
+
+[[project.authors]]
+name = "Frequenz Energy-as-a-Service GmbH"
+email = "floss@frequenz.com"
+
+[tool.maturin]
+features = ["pyo3/extension-module"]

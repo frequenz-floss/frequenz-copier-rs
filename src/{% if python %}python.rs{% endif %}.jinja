@@ -1,0 +1,17 @@
+// License: MIT
+// Copyright © 2024 Frequenz Energy-as-a-Service GmbH
+
+use pyo3::prelude::*;
+
+
+#[pyfunction]
+fn hello_world() -> PyResult<String> {
+    Ok("Hello world!".to_string())
+}
+
+
+#[pymodule]
+fn frequenz_{{project_name | replace("-", "_")}}(m: &Bound<'_, PyModule>) -> PyResult<()> {
+    m.add_function(wrap_pyfunction!(hello_world, m)?)?;
+    Ok(())
+}
