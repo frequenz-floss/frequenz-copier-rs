@@ -1,0 +1,48 @@
+# Frequenz {{project_name | replace("-", " ")}}
+
+{{project_description}}
+
+{% if python %}
+## Python Bindings
+
+To work with the Python bindings, first activate a Python Environment in which
+you want to run/build your Rust features.
+
+### Building
+
+To build the wheels, run:
+
+```bash
+pip install -r requirements.txt
+maturin build --release --features python -o wheels -i $$(which python)
+```
+
+This will install the required dependencies from
+[requirements.txt](./requirements.txt), build the wheel,
+and store it in the [./wheels](./wheels) directory.
+
+### Installing
+
+To install the project directly to the currently active Python environment, run:
+
+```bash
+pip install --force-reinstall -U ./wheels/frequenz_{{project_name | replace("-", "_")}}-*.whl
+```
+
+This will build the wheel and then install it using `pip`.
+
+### Cleaning
+
+To clean the project directory, run:
+
+```bash
+pip uninstall -y frequenz_{{project_name | replace("-", "_")}}
+pip uninstall -y -r requirements.txt
+rm -r ./wheels
+```
+
+This will remove the [./wheels](./wheels) directory and any build artifacts.
+Additionally, it will uninstall the project and its dependencies from the currently active Python
+environment.
+
+{% endif %}

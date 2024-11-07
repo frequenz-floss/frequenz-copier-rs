@@ -1,0 +1,24 @@
+[package]
+name = "frequenz-{{project_name}}"
+description = "{{project_description}}"
+version = "0.1.0"
+edition = "2021"
+authors = ["Frequenz Energy-as-a-Service GmbH"]
+license = "MIT"
+
+[lib]
+name = "frequenz_{{project_name | replace("-", "_")}}"
+path = "src/lib.rs"
+{% if python %}
+crate-type = ["cdylib", "rlib"]
+{% endif %}
+
+{% if python %}
+[features]
+python = ["pyo3"]
+{% endif %}
+
+[dependencies]
+{% if python %}
+pyo3 = { version = "0.22", features = ["extension-module"], optional = true }
+{% endif %}
