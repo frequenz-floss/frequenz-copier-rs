@@ -1,10 +1,26 @@
 project_name:
   type: str
+  default: project-name
   help: What is your project name?
 
 project_description:
   type: str
   help: What is your project description?
+
+project_author:
+  type: str
+  default: Frequenz Energy-as-a-Service GmbH
+  help: Who is the author of the project?
+
+project_author_email:
+  type: str
+  default: floss@frequenz.com
+  help: What is the email of the author?
+
+github_username:
+  type: str
+  default: frequenz-floss
+  help: What is your GitHub username?
 
 python:
   type: bool
